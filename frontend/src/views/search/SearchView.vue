@@ -12,6 +12,9 @@
             <b-card-text>
               &#8361; {{search.s_price}}
             </b-card-text>
+            <b-card-text>
+              {{search.s_info}}
+            </b-card-text>
           </b-card>
         </a>
       </div>
