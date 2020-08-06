@@ -49,7 +49,7 @@
         </b-col>
       </b-row>
       <div>
-          <b-button @click="login" style="background-color: #F1C40F; border-color:#F1C40F;">회원가입</b-button>
+          <b-button @click="signup" style="background-color: #F1C40F; border-color:#F1C40F;">회원가입</b-button>
       </div>
   </b-container>
 </template>
@@ -61,13 +61,17 @@ export default {
         return {
             signupData: {
                 username: null,
+                nickname: null,
                 password1: null,
                 password2: null,
+                email: null,
+                birth: null,
             }
         }
     },
     methods: {
         signup() {
+            // console.log('1', this.signupData)
             this.$emit('submit-signup-data', this.signupData)
         }
     }
