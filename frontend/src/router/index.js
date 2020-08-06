@@ -11,7 +11,7 @@ import ListView from '../views/articles/ListView.vue'
 import AlertView from '../views/alerts/AlertView.vue'
 
 import SearchView from '../views/search/SearchView.vue'
-
+import MapView from '../views/map/KakaoMapView.vue'
 
 Vue.use(VueRouter)
 
@@ -55,6 +55,11 @@ Vue.use(VueRouter)
     path: '/search/:selected/:checkin/:checkout/:people',
     name: 'Search',
     component: SearchView,
+  },
+  {
+    path: '/map',
+    name: 'Map',
+    component: MapView,
   }
 ]
 
