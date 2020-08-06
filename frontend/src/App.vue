@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav" class="navbar" :class="{ 'change-navbar': !changeNavbar }">
-      <b-navbar toggleable="lg" type="dark" class="nav container" :class="{ 'change-navbar': !changeNavbar }">
+      <b-navbar toggleable="lg" type="dark" class="container" >
         <div>
           <b-navbar-brand><b-link to="/"><img src="./assets/logo.png" alt="logo" class="logo"></b-link></b-navbar-brand>
           <b-navbar-brand><b-link to="/"><img src="./assets/walwal.png" alt="walwal" class="walwal"></b-link></b-navbar-brand>
@@ -20,7 +20,7 @@
                   Login
                 </template>
                 <div class="d-block text-center">
-                  <LoginVue />
+                  <LoginVue @submit-login-data="login" @submit-signup-data="signup"/>
                 </div>
               </b-modal>
             </b-nav-item>
@@ -72,7 +72,8 @@ export default {
       this.isLoggedIn = true
     },
 
-    signup(signupData) {
+  signup(signupData) {
+      // console.log(signupData)
        axios.post(SERVER_URL + '', signupData)
         .then(res => {
           this.setCookie(res.data.key)
@@ -82,6 +83,7 @@ export default {
     },
 
     login(loginData) {
+      // console.log(loginData)
       axios.post(SERVER_URL + '', loginData)
         .then(res => {
           this.setCookie(res.data.key)
@@ -133,14 +135,14 @@ export default {
 #nav {
   padding: 0;
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index :999;
 }
 
-.navbar {
+.navbar{
   transition: background-color 0.5s ease;
-  background-color: #F1C40F;
+  background-color: transparent;
 }
 
 .navbar.change-navbar {
