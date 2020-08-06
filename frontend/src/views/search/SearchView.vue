@@ -7,16 +7,21 @@
     </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-3 col-sm-6 col-md-4 content">
-        <a :href="search.s_link">
+        <b-link id="show-btn" @click="$bvModal.show('bv-modal-example')">
           <b-card :title="search.s_name" :img-src="search.s_img" img-alt="Image" img-top >
             <b-card-text>
               &#8361; {{search.s_price}}
             </b-card-text>
-            <b-card-text>
-              {{search.s_info}}
-            </b-card-text>
           </b-card>
-        </a>
+        </b-link>
+        <b-modal id="bv-modal-example" size="lg" hide-footer class="Detail-modal">
+          <template v-slot:modal-title>
+            숙소 상세보기
+          </template>
+          <div class="d-block text-center">
+            <SearchDetailVue/>
+          </div>
+        </b-modal>
       </div>
     </b-card-group>
   </div>
@@ -28,11 +33,14 @@
 
 <script>
 import axios from "axios";
+import SearchDetailVue from '@/views/search/SearchDetail.vue'
+
 
 const SERVER_URL = "http://localhost:8080";
 
 export default {
   name: "SearchView",
+  components: { SearchDetailVue },
   computed:{
   },
   data() {
