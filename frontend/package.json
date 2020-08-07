@@ -19,6 +19,7 @@
     "google-maps-api-loader": "^1.1.1",
     "sass-loader": "^9.0.2",
     "vue": "^2.6.11",
+    "vue-cli": "^2.9.6",
     "vue-cookies": "^1.7.2",
     "vue-google-oauth2": "^1.5.5",
     "vue-js-modal": "^2.0.0-rc.6",
