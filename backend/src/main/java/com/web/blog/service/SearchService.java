@@ -28,6 +28,7 @@ public class SearchService {
         Elements names = doc.select("div._1c2n35az");
         Elements images = doc.getElementsByTag("img");
         Elements links = doc.select("a._gjfol0");
+        Elements infos = doc.select("div._kqh46o");
         // Elements images = doc.select("div._1h6n1zu img[src]");
 
         // 가격 스트링 추출!
@@ -74,6 +75,22 @@ public class SearchService {
             s+=link.attr("href").toString();
             list.get(idx++).setS_link(s);
         }
+
+         //부가설명 추출!!
+         idx = 0;
+         int idx2 = 0;
+         StringBuffer p = new StringBuffer();
+         for(Element info: infos) {
+             p.append(info.text());
+             p.append(" · ");
+             if(idx%2 == 1){
+                 p.delete(p.length()-2, p.length()-1);
+                 list.get(idx2++).setS_info(p.toString());
+                 System.out.println(p.toString());
+                 p.setLength(0);
+             }
+             idx++;
+         }
 
         Collections.sort(list, new Comparator<Search>(){
             @Override

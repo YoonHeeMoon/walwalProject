@@ -27,6 +27,7 @@ public class Search {
     private String s_price;
     private String s_link;
     private String s_img;
+    private String s_info;
     
     public String getS_img() {
         return this.s_img;
@@ -58,6 +59,14 @@ public class Search {
 
     public void setS_price(String s_price) {
         this.s_price = s_price;
+    }
+
+    public String getS_info() {
+        return this.s_info;
+    }
+
+    public void setS_info(String s_info) {
+        this.s_info = s_info;
     }
     
 }

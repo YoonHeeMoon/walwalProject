@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
-import LoginView from '../views/accounts/LoginView.vue'
+import LoginView from '@/views/accounts/LoginView.vue'
 import SignupView from '../views/accounts/SignupView.vue'
 
 import CreateView from '../views/articles/CreateView.vue'
@@ -11,6 +11,7 @@ import ListView from '../views/articles/ListView.vue'
 import AlertView from '../views/alerts/AlertView.vue'
 
 import SearchView from '../views/search/SearchView.vue'
+import SearchDetailView from '../views/search/SearchDetail.vue'
 
 
 Vue.use(VueRouter)
@@ -55,6 +56,11 @@ Vue.use(VueRouter)
     path: '/search/:selected/:checkin/:checkout/:people',
     name: 'Search',
     component: SearchView,
+  },
+  {
+    path: '/search/detail',
+    name: 'SearchDetail',
+    component: SearchDetailView,
   }
 ]
 
