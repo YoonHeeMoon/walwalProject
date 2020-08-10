@@ -10,28 +10,34 @@
           <b-button v-on:click= "submit" size="sm" text="Button" style="color:gray; height:38px; background-color: white; border-color: lightgray;"><font-awesome-icon icon="search"/></b-button>
         </b-input-group-append>
       </b-input-group>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex">
         <div class="text-group">
-          <h1 class="home-title">함께하는 여행.. 그 이상의 즐거움 </h1>
-          <h5 class="home-subtitle">반려동물과 함께하는 여행! WALWAL에서 두배로 즐기세요</h5>
+          <h1 class="home-title">함께하는 여행 <br> 그 이상의 즐거움 </h1>
+          <h5 class="home-subtitle">반려동물과 함께하는 여행! <br> WALWAL에서 두배로 즐기세요!</h5>
+          <div class="d-flex justify-content-start pl-3">
+            <b-button v-b-toggle.company>WALWAL이란?</b-button>
+            <b-sidebar id="company" title="WALWAL" right shadow width="400px">
+            <div class="px-3 py-2">
+              <p>
+                WALWAL 소개
+              </p>
+               <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators>
+                <b-carousel-slide img-src="https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
+                <b-carousel-slide img-src="https://images.pexels.com/photos/3671283/pexels-photo-3671283.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
+                <b-carousel-slide img-src="https://images.pexels.com/photos/2402799/pexels-photo-2402799.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
+                <b-carousel-slide img-src="https://images.pexels.com/photos/2739505/pexels-photo-2739505.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
+              </b-carousel>
+            </div>
+    </b-sidebar>
+          </div>
         </div>
       </div>
-      <b-card-group deck class="p-5">
-        <b-card>
-          <img src="../assets/Savemoney.jpg" img-top style="width:100%; border-radius:20px;">
-            <b-card-text>
-              <h3 class="pt-3">최저가 검색</h3>
-              <p class="m-0">저렴한 펜션이 최고! 최저가로 펜션을 즐기세요!</p>
-            </b-card-text>
-        </b-card>
-        <b-card>
-          <img src="../assets/travel.jpg" img-top style="width:100%; border-radius:20px;">
-            <b-card-text>
-              <h3 class="pt-3">BEST</h3>
-              <p class="m-0">여행자들이 뽑은 BEST펜션! 함께 알아봐요!</p>
-            </b-card-text>
-        </b-card>
-      </b-card-group>
+      <div class="px-5">
+        <h1>공지사항</h1>
+            <b-link class="d-flex justify-content-end" to="/articles/Alert/">더보기</b-link>
+            <b-table :items="items" :fields="fields">
+            </b-table>
+      </div>
     </div>
   </div>
 </template>
@@ -52,7 +58,12 @@ export default {
       maxDate.setMonth(maxDate.getMonth() + 2)
       maxDate.setDate(15)
     return {
-    selected: null,
+      selected: null,
+      items: [
+          { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
+          { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
+          { age: 89, first_name: 'Geneva', last_name: 'Wilson' }
+        ],
       options: [
         { value: null, text: '지역 선택' },
         { value: 'seoul', text: '서울' },
@@ -86,7 +97,8 @@ export default {
         console.log(this.checkout);
         console.log(this.people);
         location.href="/search/" + this.selected + "/" + this.checkin + "/" + this.checkout + "/" + this.people;
-    }
+        
+    },
   }
   }
 </script>
@@ -111,19 +123,22 @@ export default {
 }
 
 .text-group{
-  padding: 150px 0px 200px 0;
+  padding: 100px 0px 200px 0;
 }
 
 .home-title {
   color: white;
+  padding-left: 10px;
   font-family: 'Nanum Gothic Coding', monospace;
-  text-align: center;
+  text-align: left;
 }
 
 .home-subtitle {
-  padding-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
   color: lightgray;
-  text-align: center;
+  text-align: left;
   font-family: 'Nanum Gothic Coding', monospace;
 }
 </style>

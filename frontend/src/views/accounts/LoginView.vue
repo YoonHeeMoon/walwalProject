@@ -22,7 +22,8 @@
   
       </div>
       <br>
-      <div id="kakao-login">
+      <div class="d-flex justify-content-center">
+      <div class="pr-3" id="kakao-login">
         <button @click ="kakaoLogin">
             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55">
                 <g id="그룹_247" data-name="그룹 247" transform="translate(-237 -406)">
@@ -116,12 +117,13 @@
             </g>
           </svg>
         </button>
+        </div>
       </div>
     </b-container>
     <hr>
     <p class="m-0">아직도 회원이 아니신가요? 
-      <b-link id="show-btn" @click="$bvModal.show('bv-modal-example')">회원가입</b-link>
-              <b-modal id="bv-modal-example" size="lg" hide-footer class="signup-modal">
+      <b-link id="show-btn" @click="$bvModal.show('bv-modal-signup')">회원가입</b-link>
+              <b-modal id="bv-modal-signup" size="lg" hide-footer class="signup-modal">
                 <template v-slot:modal-title>
                   Signup
                 </template>
@@ -135,7 +137,7 @@
 
 <script>
 import SignupVue from '@/views/accounts/SignupView.vue'
- import axios from "axios"
+import axios from "axios"
 //import AppVue from '../../App.vue'
 
 export default {
@@ -146,8 +148,6 @@ export default {
             loginData: {
                 username: null,
                 password: null,
-               email: null,
-               nickname: null,
             }
         }
     },

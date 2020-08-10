@@ -7,9 +7,9 @@
     </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
-        <b-link id="show-btn" @click="$bvModal.show('bv-modal-example')">
+        <b-link id="show-btn" @click="$bvModal.show('bv-modal-search')">
           <b-card :title="search.s_name" :img-src="search.s_img" img-alt="Image" img-top >
-            <b-card-text>
+            <b-card-text> 
               {{search.s_info}}
             </b-card-text>
             <b-card-text>
@@ -17,7 +17,9 @@
             </b-card-text>
           </b-card>
         </b-link>
-        <b-modal id="bv-modal-example" size="lg" hide-footer class="Detail-modal">
+      </div>
+    </b-card-group>
+        <b-modal id="bv-modal-search" size="lg" hide-footer class="SearchDetail-modal">
           <template v-slot:modal-title>
             숙소 상세보기
           </template>
@@ -25,8 +27,6 @@
             <SearchDetailVue/>
           </div>
         </b-modal>
-      </div>
-    </b-card-group>
   </div>
 
 </template>
