@@ -86,7 +86,6 @@ public class SearchService {
              if(idx%2 == 1){
                  p.delete(p.length()-2, p.length()-1);
                  list.get(idx2++).setS_info(p.toString());
-                 System.out.println(p.toString());
                  p.setLength(0);
              }
              idx++;
