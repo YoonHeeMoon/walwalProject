@@ -28,7 +28,15 @@ public class Search {
     private String s_link;
     private String s_img;
     private String s_info;
+    private String s_type;
     
+    public String getS_type() {
+        return this.s_type;
+    }
+
+    public void setS_type(String s_type) {
+        this.s_type = s_type;
+    }
     public String getS_img() {
         return this.s_img;
     }
