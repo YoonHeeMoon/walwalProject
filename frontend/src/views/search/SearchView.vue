@@ -7,7 +7,7 @@
     </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
-        <b-link id="show-btn" @click="$bvModal.show('bv-modal-search')">
+        <b-link id="show-btn" @click="getModalDatas(search.s_link)"> 
           <b-card :title="search.s_name" :img-src="search.s_img" img-alt="Image" img-top >
             <b-card-text> 
               {{search.s_info}}
@@ -22,9 +22,10 @@
         <b-modal id="bv-modal-search" size="lg" hide-footer class="SearchDetail-modal">
           <template v-slot:modal-title>
             숙소 상세보기
+            
           </template>
           <div class="d-block text-center">
-            <SearchDetailVue/>
+            {{detailsearch.d_dong}}
           </div>
         </b-modal>
   </div>
@@ -36,23 +37,23 @@
 
 <script>
 import axios from "axios";
-import SearchDetailVue from '@/views/search/SearchDetail.vue'
 
 
 const SERVER_URL = "http://localhost:8080";
 
 export default {
   name: "SearchView",
-  components: { SearchDetailVue },
   computed:{
-  },
+    },
   data() {
     return {
       selected: this.$route.params.selected,
       checkin: this.$route.params.checkin,
       checkout: this.$route.params.checkout,
       people: this.$route.params.people,
-      searches: []
+      link: "",
+      searches: [],
+      detailsearch: "",
     };
   },
   methods: {
@@ -60,12 +61,29 @@ export default {
       axios.get(SERVER_URL + "/search", {
         params:{
           selected:this.selected,checkin:this.checkin,checkout:this.checkout,people:this.people
-      }
+        }
       }
       
       )
         .then(res => this.searches = res.data)
         .catch(err => console.error(err))
+    },
+    getModalDatas(link){
+        console.log(link);
+        this.link = link;
+        axios.get(SERVER_URL + "/detailsearch", {
+        params:{
+          link:this.link
+        }
+      }
+      )
+        .then(res => this.detailsearch = res.data,
+        
+        console.log(this.detailsearch.d_dong)
+        )
+        .catch(err => console.error(err));
+        console.log(this.detailsearch.d_dong);
+        this.$bvModal.show('bv-modal-search');
     },
   },
   created() {
