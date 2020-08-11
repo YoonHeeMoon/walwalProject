@@ -1,6 +1,8 @@
 package com.web.blog.controller.search;
 
 import com.web.blog.model.search.Search;
+import com.web.blog.model.search.SearchDetail;
+import com.web.blog.service.SearchDetailService;
 import com.web.blog.service.SearchService;
 import com.web.blog.service.SearchServiceCom;
 
@@ -43,9 +45,6 @@ public class SearchController {
     final HttpSession session) throws IOException {
         List<Search> list = service.getAirbnbDatas(selected,checkin,checkout,people);
 
-        for (Search li : list) {
-            System.out.println(li.getS_name() + " " + li.getS_img());
-        }
 
         return new ResponseEntity<List<Search>>(list, HttpStatus.OK);
     }
@@ -76,4 +75,16 @@ public class SearchController {
     
     }
     
+
+    @Autowired
+    SearchDetailService dService;
+    
+    @GetMapping("/detailsearch")
+    @ApiOperation(value = "세부검색")
+    public ResponseEntity<SearchDetail> dSearch(@RequestParam(required = true) final String link,final HttpSession session)throws IOException{
+        
+        SearchDetail dlist = dService.getAirbnbDatas(link);
+
+        return new ResponseEntity<SearchDetail>(dlist, HttpStatus.OK);
+    }
 }

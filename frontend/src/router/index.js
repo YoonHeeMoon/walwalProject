@@ -11,7 +11,6 @@ import ListView from '../views/articles/ListView.vue'
 import AlertView from '../views/alerts/AlertView.vue'
 
 import SearchView from '../views/search/SearchView.vue'
-import SearchDetailView from '../views/search/SearchDetail.vue'
 
 
 Vue.use(VueRouter)
@@ -58,10 +57,10 @@ Vue.use(VueRouter)
     component: SearchView,
   },
   {
-    path: '/search/detail',
-    name: 'SearchDetail',
-    component: SearchDetailView,
-  }
+    path: '/detailsearch/:link',
+    name: 'DetailSearch',
+    component: SearchView,
+  },
 ]
 
 const router = new VueRouter({
