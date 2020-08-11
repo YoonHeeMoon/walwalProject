@@ -75,34 +75,28 @@ public class SearchService {
             s+=link.attr("href").toString();
             list.get(idx++).setS_link(s);
         }
+        idx = 0;
+        for(Search s1 :list) {
+        	s1.setS_type("1");
+        }
 
-         //부가설명 추출!!
-         idx = 0;
-         int idx2 = 0;
-         StringBuffer p = new StringBuffer();
-         for(Element info: infos) {
-             p.append(info.text());
-             p.append(" · ");
-             if(idx%2 == 1){
-                 p.delete(p.length()-2, p.length()-1);
-                 list.get(idx2++).setS_info(p.toString());
-                 p.setLength(0);
-             }
-             idx++;
-         }
-
-        Collections.sort(list, new Comparator<Search>(){
-            @Override
-            public int compare(Search s1, Search s2) {
-                if (Integer.parseInt(s1.getS_price().replace(",", ""))< (Integer.parseInt(s2.getS_price().replace(",", "")))) {
-                    return -1;
-                } else{
-                    return 1;
-                }
+        //부가설명 추출!!
+        idx = 0;
+        int idx2 = 0;
+        StringBuffer p = new StringBuffer();
+        for(Element info: infos) {
+            p.append(info.text());
+            p.append(" · ");
+            if(idx%2 == 1){
+                p.delete(p.length()-2, p.length()-1);
+                list.get(idx2++).setS_info(p.toString());
+                p.setLength(0);
             }
-        });
-
+            idx++;
+        }
 
         return list;
     }
+    
+    
 }
