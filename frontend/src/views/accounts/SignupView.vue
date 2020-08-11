@@ -18,18 +18,18 @@
       </b-row>
       <b-row class="my-1">
         <b-col sm="3">
-          <label for="pwd1">비밀번호</label>
+          <label for="password">비밀번호</label>
         </b-col>
         <b-col sm="9">
-          <b-form-input v-model="signupData.pwd1" v-validate="'required|min:6|max:35'" type="password"></b-form-input>
+          <b-form-input v-model="signupData.password"  type="password"></b-form-input>
         </b-col>
       </b-row>
       <b-row class="my-1">
         <b-col sm="3">
-          <label for="pwd2">비밀번호 확인</label>
+          <label for="password1">비밀번호 확인</label>
         </b-col>
         <b-col sm="9">
-          <b-form-input v-model="signupData.pwd2" v-validate="'required|confirmed:password'" type="password"></b-form-input>
+          <b-form-input v-model="signupData.password1" v-validate="'required|confirmed:password'" type="password"></b-form-input>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: 'SignupView',
     data() {
@@ -62,8 +64,8 @@ export default {
             signupData: {
                 name: null,
                 nickname: null,
+                password: null,
                 password1: null,
-                password2: null,
                 email: null,
                 birth: null,
             }
@@ -71,9 +73,20 @@ export default {
     },
     methods: {
         signup() {
-            // console.log('1', this.signupData)
-            this.$emit('submit-signup-data', this.signupData)
-        }
+            console.log('1', this.signupData)
+            // this.$emit('submit-signup-data', this.signupData)
+
+            axios.post('http://localhost:8080/account', this.signupData, {
+            headers: {
+              'Content-Type': 'application/json'
+              }
+            })
+            .then(res => {
+              this.setCookie(res.data.key)
+              this.$router.push({ name: 'Home' })
+            })
+            .catch(err => this.errorMessages = err.response.data)
+            }
     }
 }
 </script>
