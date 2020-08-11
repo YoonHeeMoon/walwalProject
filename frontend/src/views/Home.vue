@@ -2,9 +2,9 @@
   <div class="bg-image">
     <div class="home container">
       <b-input-group class="d-flex flex-row justify-content-between pt-5" >
-        <b-form-select v-model="selected" :options="options"></b-form-select>
-        <b-form-datepicker v-model= "checkin" id="datepicker-invalid-checkIn" :min="min" :max="max" locale="ko" class="mb-2" placeholder="체크인" ></b-form-datepicker>
-        <b-form-datepicker v-model= "checkout"  id="datepicker-invalid-checkOut" :min="min" :max="max" locale="ko" class="mb-2" placeholder="체크아웃"></b-form-datepicker>
+        <b-form-select v-model="selected" :options="options" ></b-form-select>
+        <b-form-datepicker v-model= "checkin" id="datepicker-invalid-checkIn" :min="min" :max="max" locale="ko" class="" placeholder="체크인" ></b-form-datepicker>
+        <b-form-datepicker v-model= "checkout"  id="datepicker-invalid-checkOut" :min="min" :max="max" locale="ko" class="" placeholder="체크아웃"></b-form-datepicker>
         <b-form-spinbutton id="demo-sb" v-model="people" min="1" max="100" placeholder="인원 수"></b-form-spinbutton>
         <b-input-group-append>
           <b-button v-on:click= "submit" size="sm" text="Button" style="color:gray; height:38px; background-color: white; border-color: lightgray;"><font-awesome-icon icon="search"/></b-button>

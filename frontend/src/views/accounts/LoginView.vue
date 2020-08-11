@@ -153,7 +153,7 @@ export default {
     },
     methods: {
         signup(signupData) {
-          // console.log('2', signupData)
+          console.log('2', signupData)
             this.$emit('submit-signup-data', signupData)
         },
         login() {

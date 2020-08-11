@@ -70,19 +70,19 @@ export default {
       this.isLoggedIn = true
     },
 
-  signup(signupData) {
-      // console.log(signupData)
-       axios.post(SERVER_URL + '/account', signupData, {
-         headers: {
-           'Content-Type': 'application/json'
-         }
-       })
-        .then(res => {
-          this.setCookie(res.data.key)
-          this.$router.push({ name: 'Home' })
-        })
-        .catch(err => this.errorMessages = err.response.data)
-    },
+  // signup(signupData) {
+  //     // console.log(signupData)
+  //     //  axios.post(SERVER_URL + '/account', signupData, {
+  //     //    headers: {
+  //     //      'Content-Type': 'application/json'
+  //     //    }
+  //     //  })
+  //     //   .then(res => {
+  //     //     this.setCookie(res.data.key)
+  //     //     this.$router.push({ name: 'Home' })
+  //     //   })
+  //     //   .catch(err => this.errorMessages = err.response.data)
+  //   },
 
     login(loginData) {
       // console.log(loginData)
@@ -154,21 +154,21 @@ export default {
 
 .navbar a {
   font-weight: bold;
-  color: white;
+  color: gray;
 }
 
 .navbar a:hover {
-  color: white;
+  color: gray;
   text-decoration: none;
 }
 
 .navbar.change-navbar a {
   font-weight: bold;
-  color: black;
+  color: gray;
 }
 
 .navbar.change-navbar a:hover {
-  color: black;
+  color: gray;
   text-decoration: none;
 }
 
