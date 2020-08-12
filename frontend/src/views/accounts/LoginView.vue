@@ -148,6 +148,8 @@ export default {
             loginData: {
                 username: null,
                 password: null,
+                email: null,
+                nickname:null
             }
         }
     },

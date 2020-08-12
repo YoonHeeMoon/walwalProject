@@ -40,14 +40,14 @@
           <b-form-input v-model="signupData.email" type="email"></b-form-input>
         </b-col>
       </b-row>
-      <b-row class="my-1">
+      <!-- <b-row class="my-1">
         <b-col sm="3">
           <label for="birth">생년월일</label>
         </b-col>
         <b-col sm="9">
           <b-form-input v-model="signupData.birth" type="date"></b-form-input>
         </b-col>
-      </b-row>
+      </b-row> -->
       <div>
           <b-button @click="signup" style="background-color: #F1C40F; border-color:#F1C40F;">회원가입</b-button>
       </div>
@@ -67,7 +67,7 @@ export default {
                 password: null,
                 password1: null,
                 email: null,
-                birth: null,
+                // birth: null,
             }
         }
     },
