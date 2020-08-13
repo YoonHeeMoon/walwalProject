@@ -7,7 +7,7 @@
     </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
-        <b-link id="show-btn" @click="getModalDatas(search.s_link)"> 
+        <b-link id="show-btn" @click="getModalDatas(search.s_link,search.s_type)"> 
           <b-card :title="search.s_name" :img-src="search.s_img" img-alt="Image" img-top >
             <b-card-text> 
               {{search.s_info}}
@@ -25,7 +25,14 @@
             
           </template>
           <div class="d-block text-center">
-            {{detailsearch.d_dong}}
+            <div v-if="detailsearch ===''">
+              로딩중
+            </div>
+            <div v-else>
+              {{detailsearch.d_dong}}
+            
+                  <kakaoVue :val="detailsearch.d_dong"/>
+            </div>
           </div>
         </b-modal>
   </div>
@@ -37,12 +44,15 @@
 
 <script>
 import axios from "axios";
-
+import kakaoVue from '@/views/map/KakaoMapView.vue'
 
 const SERVER_URL = "http://localhost:8080";
 
 export default {
   name: "SearchView",
+  components: {
+     kakaoVue
+     },
   computed:{
     },
   data() {
@@ -52,8 +62,12 @@ export default {
       checkout: this.$route.params.checkout,
       people: this.$route.params.people,
       link: "",
+      type:"",
       searches: [],
       detailsearch: "",
+      lng: "",
+      lat: "",
+      results: [],
     };
   },
   methods: {
@@ -68,22 +82,30 @@ export default {
         .then(res => this.searches = res.data)
         .catch(err => console.error(err))
     },
-    getModalDatas(link){
+    getModalDatas(link,type){
         console.log(link);
         this.link = link;
+        this.type = type;
+        this.detailsearch="";
         axios.get(SERVER_URL + "/detailsearch", {
         params:{
-          link:this.link
+          link:this.link,
+          type:this.type
         }
       }
       )
         .then(res => this.detailsearch = res.data,
-        
-        console.log(this.detailsearch.d_dong)
+          console.log(this.detailsearch.d_dong),
+          axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+'서울특별시'+'&key=AIzaSyA0l538JpdPEwHpgl4PfROrV54pFK5IMlA')
+          .then(result => this.results = result,
+          console.log(this.results),
+          console.log("lat!")
+          ).catch(err => console.error(err))
         )
         .catch(err => console.error(err));
-        console.log(this.detailsearch.d_dong);
+
         this.$bvModal.show('bv-modal-search');
+        console.log(this.detailsearch.d_dong);
     },
   },
   created() {

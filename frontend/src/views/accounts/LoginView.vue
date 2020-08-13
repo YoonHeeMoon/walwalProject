@@ -149,7 +149,11 @@ export default {
                 name: null,
                 password: null,
                 email: null,
+<<<<<<< HEAD
                 nickname: null,
+=======
+                nickname:null
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
             }
         }
     },

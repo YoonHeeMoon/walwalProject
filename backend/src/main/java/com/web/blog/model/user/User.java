@@ -1,9 +1,10 @@
-// 하단 DB 설정 부분은 Sub PJT II에서 데이터베이스를 구성한 이후에 주석을 해제하여 사용.
-
 package com.web.blog.model.user;
 
+<<<<<<< HEAD
 
 import javax.persistence.Column;
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,8 +34,11 @@ public class User {
     private String name;
     private String nickname;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 	public String getUser_num() {
 		return user_num;
 	}
@@ -75,7 +79,10 @@ public class User {
 		this.nickname = nickname;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
     
 
 }
