@@ -25,7 +25,14 @@
             
           </template>
           <div class="d-block text-center">
-            {{detailsearch.d_dong}}
+            <div v-if="detailsearch ===''">
+              로딩중
+            </div>
+            <div v-else>
+              {{detailsearch.d_dong}}
+            
+                  <kakaoVue :val="detailsearch.d_dong"/>
+            </div>
           </div>
         </b-modal>
   </div>
@@ -37,12 +44,15 @@
 
 <script>
 import axios from "axios";
-
+import kakaoVue from '@/views/map/KakaoMapView.vue'
 
 const SERVER_URL = "http://localhost:8080";
 
 export default {
   name: "SearchView",
+  components: {
+     kakaoVue
+     },
   computed:{
     },
   data() {
@@ -55,6 +65,9 @@ export default {
       type:"",
       searches: [],
       detailsearch: "",
+      lng: "",
+      lat: "",
+      results: [],
     };
   },
   methods: {
@@ -73,6 +86,7 @@ export default {
         console.log(link);
         this.link = link;
         this.type = type;
+        this.detailsearch="";
         axios.get(SERVER_URL + "/detailsearch", {
         params:{
           link:this.link,
@@ -81,9 +95,12 @@ export default {
       }
       )
         .then(res => this.detailsearch = res.data,
-        
-        console.log(this.detailsearch.d_dong)
-        
+          console.log(this.detailsearch.d_dong),
+          axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+'서울특별시'+'&key=AIzaSyA0l538JpdPEwHpgl4PfROrV54pFK5IMlA')
+          .then(result => this.results = result,
+          console.log(this.results),
+          console.log("lat!")
+          ).catch(err => console.error(err))
         )
         .catch(err => console.error(err));
 
