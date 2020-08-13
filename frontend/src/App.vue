@@ -6,14 +6,13 @@
           <b-navbar-brand><b-link to="/"><img src="./assets/logo7.png" alt="logo" class="logo"></b-link></b-navbar-brand>
           <b-navbar-brand><b-link to="/"><img src="./assets/walwal4.png" alt="walwal" class="walwal"></b-link></b-navbar-brand>
         </div>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-        <b-collapse id="nav-collapse" is-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-nav-item class="mx-2" v-if="!isLoggedIn">
-              <b-link id="show-btn" @click="$bvModal.show('bv-modal-login')">로그인</b-link>
-              <b-modal id="bv-modal-login" hide-footer class="login-modal">
+              <b-link id="show-btn" @click="$bvModal.show('bv-modal-example')">로그인</b-link>
+              <!-- <b-link id="show-btn" :to="{ name: 'Signup' }">회원가입</b-link> -->
+              <b-modal id="bv-modal-example" hide-footer class="login-modal">
                 <template v-slot:modal-title>
                   Login
                 </template>
@@ -26,13 +25,12 @@
             <b-nav-item-dropdown right v-if="isLoggedIn">
               <!-- Using 'button-content' slot -->
               <template v-slot:button-content>
-                <em>User</em>
+                User
               </template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#"><b-link v-if="isLoggedIn" to="/accounts/logout" @click.native="logout" >로그아웃</b-link></b-dropdown-item>
+              <b-dropdown-item href="#" v-if="isLoggedIn"><b-link to="/account/profile" @click.native="Profile">Profile</b-link></b-dropdown-item>
+              <b-dropdown-item href="#" v-if="isLoggedIn"><b-link to="/account/logout" @click.native="logout">Logout</b-link></b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
-        </b-collapse>
       </b-navbar>
     </div>
     <router-view @submit-login-data="login" @submit-signup-data="signup"/>
@@ -54,6 +52,8 @@ export default {
       errorMessages: null,
       changeNavbar: true,
       lastScrollPosition: 0,
+      email:"",
+      password:""
     }
   },
 
@@ -70,28 +70,35 @@ export default {
       this.isLoggedIn = true
     },
 
-  // signup(signupData) {
-  //     // console.log(signupData)
-  //     //  axios.post(SERVER_URL + '/account', signupData, {
-  //     //    headers: {
-  //     //      'Content-Type': 'application/json'
-  //     //    }
-  //     //  })
-  //     //   .then(res => {
-  //     //     this.setCookie(res.data.key)
-  //     //     this.$router.push({ name: 'Home' })
-  //     //   })
-  //     //   .catch(err => this.errorMessages = err.response.data)
-  //   },
-
-    login(loginData) {
-      // console.log(loginData)
-      axios.get(SERVER_URL + '/account', loginData)
+  signup(signupData) {
+      console.log(signupData)
+       axios.post(SERVER_URL + '/account/signup', signupData, {
+         headers: {
+           'Content-Type': 'application/json'
+         }
+       })
         .then(res => {
           this.setCookie(res.data.key)
           this.$router.push({ name: 'Home' })
         })
         .catch(err => this.errorMessages = err.response.data)
+    },
+
+  login(loginData) {
+    // console.log(loginData)
+    console.log(loginData.email)
+    console.log(loginData.password)
+    axios.get(SERVER_URL + '/account/login',{
+      params:{
+        email:loginData.email,
+        password:loginData.password,
+      }
+    })
+      .then(res => {
+        this.setCookie(res.data.key)
+        this.$router.push({ name: 'Home' })
+      })
+      .catch(err => this.errorMessages = err.response.data)
     },
 
     logout() {
@@ -154,22 +161,26 @@ export default {
 
 .navbar a {
   font-weight: bold;
-  color: gray;
+  color: lightgray;
 }
 
 .navbar a:hover {
-  color: gray;
+  color: lightgray;
   text-decoration: none;
 }
 
 .navbar.change-navbar a {
   font-weight: bold;
-  color: gray;
+  color: black;
 }
 
 .navbar.change-navbar a:hover {
-  color: gray;
+  color: black;
   text-decoration: none;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: lightgray !important; 
 }
 
 .login-modal {
@@ -179,12 +190,13 @@ export default {
 .logo {
   width: 70px;
 }
+
 .walwal {
   height: 30px;
 }
 
 #nav a.router-link-exact-active {
-    color: white;
+    color: lightgray;
 }
 
 .modal-open {

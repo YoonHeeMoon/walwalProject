@@ -18,34 +18,26 @@
       </b-row>
       <b-row class="my-1">
         <b-col sm="3">
-          <label for="password">비밀번호</label>
-        </b-col>
-        <b-col sm="9">
-          <b-form-input v-model="signupData.password"  type="password"></b-form-input>
-        </b-col>
-      </b-row>
-      <b-row class="my-1">
-        <b-col sm="3">
-          <label for="password1">비밀번호 확인</label>
-        </b-col>
-        <b-col sm="9">
-          <b-form-input v-model="signupData.password1" v-validate="'required|confirmed:password'" type="password"></b-form-input>
-        </b-col>
-      </b-row>
-      <b-row class="my-1">
-        <b-col sm="3">
           <label for="email">이메일</label>
         </b-col>
         <b-col sm="9">
           <b-form-input v-model="signupData.email" type="email"></b-form-input>
         </b-col>
       </b-row>
-      <!-- <b-row class="my-1">
+      <b-row class="my-1">
         <b-col sm="3">
-          <label for="birth">생년월일</label>
+          <label for="password">비밀번호</label>
         </b-col>
         <b-col sm="9">
-          <b-form-input v-model="signupData.birth" type="date"></b-form-input>
+          <b-form-input v-model="signupData.password"  type="password"></b-form-input>
+        </b-col>
+      </b-row>
+      <!-- <b-row class="my-1">
+        <b-col sm="3">
+          <label for="password1">비밀번호 확인</label>
+        </b-col>
+        <b-col sm="9">
+          <b-form-input v-model="signupData.password1" v-validate="'required|confirmed:password'" type="password"></b-form-input>
         </b-col>
       </b-row> -->
       <div>
@@ -55,7 +47,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
     name: 'SignupView',
@@ -74,18 +66,9 @@ export default {
     methods: {
         signup() {
             console.log('1', this.signupData)
-            // this.$emit('submit-signup-data', this.signupData)
+            this.$emit('submit-signup-data', this.signupData)
 
-            axios.post('http://localhost:8080/account', this.signupData, {
-            headers: {
-              'Content-Type': 'application/json'
-              }
-            })
-            .then(res => {
-              this.setCookie(res.data.key)
-              this.$router.push({ name: 'Home' })
-            })
-            .catch(err => this.errorMessages = err.response.data)
+            
             }
     }
 }

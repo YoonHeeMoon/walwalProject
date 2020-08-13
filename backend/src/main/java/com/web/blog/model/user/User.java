@@ -1,5 +1,10 @@
 package com.web.blog.model.user;
 
+<<<<<<< HEAD
+
+import javax.persistence.Column;
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,12 +27,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String user_num;
 
-    private String email;
+    
     @JsonIgnore
-    private String password;
+	private String password;
+	private String email;
     private String name;
     private String nickname;
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 	public String getUser_num() {
 		return user_num;
 	}
@@ -68,6 +79,10 @@ public class User {
 		this.nickname = nickname;
 	}
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
     
 
 }

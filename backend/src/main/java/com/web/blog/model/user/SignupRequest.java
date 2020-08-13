@@ -1,5 +1,9 @@
 package com.web.blog.model.user;
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -23,6 +27,10 @@ public class SignupRequest {
     @ApiModelProperty(required = true)
     @NotNull
     String name;
+<<<<<<< HEAD
+
+=======
+>>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
     
 	public String getEmail() {
 		return email;
