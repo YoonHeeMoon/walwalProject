@@ -47,6 +47,26 @@ public class SearchDetailService {
         detailsearch.setD_dong(dong.text());
         
 
+         //이미지추출
+         Elements images = doc.getElementsByTag("img");
+         for(Element image: images) {
+             
+             String url = image.attr("src").toString();
+             System.out.println(url);
+             if(idx == 0){
+                 detailsearch.setD_img1(url);
+             }
+             if(idx == 1){
+                 detailsearch.setD_img2(url);
+             }
+             if(idx == 2){
+                 detailsearch.setD_img3(url);
+             }
+             idx++;
+             if(idx == 3)
+                 break;
+         }
+         
         // // 이미지 추출!
         // idx = 0;
         // boolean flag = true; // 이미지 태그를 모두 받아오기 때문에, 제일 첫번째의 로고 이미지는 빼주기 위한 Boolean
