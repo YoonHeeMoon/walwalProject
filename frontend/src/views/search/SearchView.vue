@@ -7,7 +7,7 @@
     </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
-        <b-link id="show-btn" @click="getModalDatas(search.s_link)"> 
+        <b-link id="show-btn" @click="getModalDatas(search.s_link,search.s_type)"> 
           <b-card :title="search.s_name" :img-src="search.s_img" img-alt="Image" img-top >
             <b-card-text> 
               {{search.s_info}}
@@ -52,6 +52,7 @@ export default {
       checkout: this.$route.params.checkout,
       people: this.$route.params.people,
       link: "",
+      type:"",
       searches: [],
       detailsearch: "",
     };
@@ -68,22 +69,26 @@ export default {
         .then(res => this.searches = res.data)
         .catch(err => console.error(err))
     },
-    getModalDatas(link){
+    getModalDatas(link,type){
         console.log(link);
         this.link = link;
+        this.type = type;
         axios.get(SERVER_URL + "/detailsearch", {
         params:{
-          link:this.link
+          link:this.link,
+          type:this.type
         }
       }
       )
         .then(res => this.detailsearch = res.data,
         
         console.log(this.detailsearch.d_dong)
+        
         )
         .catch(err => console.error(err));
-        console.log(this.detailsearch.d_dong);
+
         this.$bvModal.show('bv-modal-search');
+        console.log(this.detailsearch.d_dong);
     },
   },
   created() {

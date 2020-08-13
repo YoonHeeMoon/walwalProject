@@ -61,10 +61,7 @@ public class SearchController {
                 }
             }
         });
-        
-        for (Search li : list) {
-            System.out.println(li.getS_name() + " " + li.getS_img());
-        }
+   
 
         return new ResponseEntity<List<Search>>(list, HttpStatus.OK);
     }
@@ -74,9 +71,10 @@ public class SearchController {
     
     @GetMapping("/detailsearch")
     @ApiOperation(value = "세부검색")
-    public ResponseEntity<SearchDetail> dSearch(@RequestParam(required = true) final String link,final HttpSession session)throws IOException{
+    public ResponseEntity<SearchDetail> dSearch(@RequestParam(required = true) final String link,
+    @RequestParam(required = true) final String type,final HttpSession session)throws IOException{
         
-        SearchDetail dlist = dService.getAirbnbDatas(link);
+        SearchDetail dlist = dService.getAirbnbDatas(link,type);
 
         return new ResponseEntity<SearchDetail>(dlist, HttpStatus.OK);
     }

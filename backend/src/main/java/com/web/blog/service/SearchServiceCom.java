@@ -111,18 +111,12 @@ public class SearchServiceCom {
 		for(Element article : articles) {
 			Search searchVO = new Search();
 			searchVO.setS_price(article.select("div.price").select("ins").text().replace("₩",""));
-			System.out.println(article.select("div.price").select("ins").text().replace("₩",""));
 			if(searchVO.getS_price().equals("")) continue;
 			
 			searchVO.setS_name(article.select(".p-name").text());
-			System.out.println(article.select(".p-name").text());
 			
 			searchVO.setS_link("https://kr.hotels.com"+article.select("section.hotel-wrap aside a.cta").attr("href").toString());
-			System.out.println("https://kr.hotels.com"+article.select("section.hotel-wrap aside a.cta").attr("href").toString());
-			
 			searchVO.setS_img(article.select("img.featured-img-desktop").attr("style").toString().split("\'")[1].split("\\?")[0]);
-			System.out.println(article.select("img.featured-img-desktop").attr("style").toString().split("\'")[1].split("\\?")[0]);
-			
 			searchVO.setS_type("2");
 			list.add(searchVO);
 			
