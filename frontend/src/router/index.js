@@ -63,7 +63,7 @@ Vue.use(VueRouter)
     component: SearchView,
   },
   {
-    path: '/detailsearch/:link',
+    path: '/detailsearch/:link/:type',
     name: 'DetailSearch',
     component: SearchView,
   },
