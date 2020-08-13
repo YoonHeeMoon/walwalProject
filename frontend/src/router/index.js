@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
-import SignupView from '../views/accounts/SignupView.vue'
+import SignupView from '@/views/accounts/SignupView.vue'
 import Profile from '../views/accounts/Profile.vue'
 
 import CreateView from '../views/articles/CreateView.vue'
@@ -23,17 +23,17 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/accounts/login',
+    path: '/account/login',
     name: 'Login',
     component: LoginView,
   },
   {
-    path: '/accounts/signup',
+    path: '/account/signup',
     name: 'Signup',
     component: SignupView,
   },
   {
-    path: '/accounts/profile',
+    path: '/account/profile',
     name: 'Profile',
     component: Profile
   },

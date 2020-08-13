@@ -1,6 +1,5 @@
 package com.web.blog.controller.account;
 
-import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
 
@@ -34,14 +33,14 @@ import io.swagger.annotations.ApiResponses;
         @ApiResponse(code = 404, message = "Not Found", response = BasicResponse.class),
         @ApiResponse(code = 500, message = "Failure", response = BasicResponse.class) })
 
-@CrossOrigin(origins = { "http://localhost:80" })
+@CrossOrigin(origins = { "http://localhost:3000" })
 @RestController
 public class AccountController {
 
 	@Autowired
 	UserDao userDao;
 
-	@GetMapping("/account")
+	@GetMapping("/account/login")
 	@ApiOperation(value = "로그인")
 	public Object login(@RequestParam(required = true) final String email,
 			@RequestParam(required = true) final String password) {
@@ -52,6 +51,7 @@ public class AccountController {
 		ResponseEntity response = null;
 
 		if (userOpt.isPresent()) {
+			System.out.println("ok");
 			final BasicResponse result = new BasicResponse();
 			result.status = true;
 			result.data = "success";
@@ -132,14 +132,14 @@ public class AccountController {
 	}
 
 
-	@PostMapping("/account")
+	@PostMapping("/account/signup")
 	@ApiOperation(value = "가입하기")
 	public Object signup(@Valid @RequestBody SignupRequest request) {
 		String email = request.getEmail();
 		String password = request.getPassword();
 		String nickname = request.getNickname();
 		String name = request.getName();
-		LocalDateTime birth = request.getBirth();
+
 		
 		System.out.println("가입한 이메일 : " + email);
 		System.out.println("닉네임 : " + nickname);
@@ -157,7 +157,7 @@ public class AccountController {
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setName(name);
-		user.setBirth(birth);
+
 		
 		userDao.save(user);
 

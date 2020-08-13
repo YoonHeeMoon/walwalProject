@@ -1,6 +1,5 @@
 package com.web.blog.model.user;
 
-import java.time.LocalDateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -25,8 +24,7 @@ public class SignupRequest {
     @ApiModelProperty(required = true)
     @NotNull
     String name;
-    @ApiModelProperty(required = true)
-    LocalDateTime birth;
+
     
 	public String getEmail() {
 		return email;
@@ -51,12 +49,6 @@ public class SignupRequest {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public LocalDateTime getBirth() {
-		return birth;
-	}
-	public void setBirth(LocalDateTime birth) {
-		this.birth = birth;
 	}
 
     

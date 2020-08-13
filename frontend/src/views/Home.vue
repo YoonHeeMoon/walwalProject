@@ -16,17 +16,18 @@
           <h5 class="home-subtitle">반려동물과 함께하는 여행! <br> WALWAL에서 두배로 즐기세요!</h5>
           <div class="d-flex justify-content-start pl-3">
             <b-button v-b-toggle.company>WALWAL이란?</b-button>
-            <b-sidebar id="company" title="WALWAL" right shadow width="400px">
+            <b-sidebar id="company" right shadow width="400px">
             <div class="px-3 py-2">
-              <p>
-                WALWAL 소개
-              </p>
+              <img src=../assets/walwal1.png alt="" class="img-size pb-3">
                <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators>
-                <b-carousel-slide img-src="https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
-                <b-carousel-slide img-src="https://images.pexels.com/photos/3671283/pexels-photo-3671283.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
-                <b-carousel-slide img-src="https://images.pexels.com/photos/2402799/pexels-photo-2402799.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
-                <b-carousel-slide img-src="https://images.pexels.com/photos/2739505/pexels-photo-2739505.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=600"></b-carousel-slide>
+                <b-carousel-slide img-src="https://cdn.pixabay.com/photo/2017/12/27/14/02/friends-3042751_960_720.jpg"></b-carousel-slide>
+                <b-carousel-slide img-src="https://i.pinimg.com/originals/bf/b3/c9/bfb3c9a2dc72cb9f70a80b6217eb57a2.jpg"></b-carousel-slide>
               </b-carousel>
+              <br>
+                <p>반려견과 함께할 숙박 정보</p>
+                <p>숙소 이미지, 예약, 금액 등 숙박에 필요한 정보</p>
+                <p>동물 병원, 반려견과의 공원 정보</p>
+                <p>walwal이 해결해드립니다.</p>
             </div>
     </b-sidebar>
           </div>
@@ -105,8 +106,13 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
+
+.img-size {
+ width: 75%;
+}
+
 .bg-image {
-  background-image: url("../assets/main3.jpg");
+  background-image: url("../assets/main5.jpg");
   background-size: 100% 650px;
   display: flex;
   flex-wrap: wrap;

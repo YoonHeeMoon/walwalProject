@@ -3,10 +3,10 @@
     <b-container>
       <b-row class="my-1">
         <b-col sm="3">
-          <label for="username">아이디 </label>
+          <label for="email">아이디 </label>
         </b-col>
         <b-col sm="9">
-          <b-form-input v-model="loginData.username" type="text"></b-form-input>
+          <b-form-input v-model="loginData.email" type="email"></b-form-input>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -122,8 +122,8 @@
     </b-container>
     <hr>
     <p class="m-0">아직도 회원이 아니신가요? 
-      <b-link id="show-btn" @click="$bvModal.show('bv-modal-signup')">회원가입</b-link>
-              <b-modal id="bv-modal-signup" size="lg" hide-footer class="signup-modal">
+       <b-link id="show-btn" @click="$bvModal.show('bv-modal-signup')">회원가입</b-link>
+              <b-modal id="bv-modal-signup" size="lg" hide-footer >
                 <template v-slot:modal-title>
                   Signup
                 </template>
@@ -138,7 +138,7 @@
 <script>
 import SignupVue from '@/views/accounts/SignupView.vue'
 import axios from "axios"
-//import AppVue from '../../App.vue'
+// import AppVue from '../../App.vue'
 
 export default {
     name: 'LoginView',
@@ -146,16 +146,18 @@ export default {
     data() {
         return {
             loginData: {
-                username: null,
+                name: null,
                 password: null,
+                email: null,
+                nickname: null,
             }
         }
     },
     methods: {
-        signup(signupData) {
-          console.log('2', signupData)
-            this.$emit('submit-signup-data', signupData)
-        },
+        // signup(signupData) {
+        //   console.log('2', signupData)
+        //     this.$emit('submit-signup-data', signupData)
+        // },
         login() {
             // console.log(this.loginData)
             this.$emit('submit-login-data', this.loginData)
@@ -174,6 +176,7 @@ export default {
             .then(res => {
              //로그인 성공
              console.log(res)
+             this.$router.push({ name: 'Home' })
              
             })
             .catch(err => {
@@ -210,6 +213,7 @@ export default {
             .then((res) => {
               console.log(res);
               console.log("회원 정보 있음");
+              this.$router.push({ name: 'Home' })
               // this.$parent.login(userInfo);
             })
             .catch((err) => {
@@ -233,6 +237,18 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.btn {
+  border: 1px solid currentColor;
+  border-radius: 999999px;
+  padding: 0.75rem 3rem;
+  text-align: center;
+  background: transparent;
+  cursor: pointer;
+  border-color: currentColor;
+  width: fit-content;
+  font-weight: 700;
+  position: relative;
+  transition: color 0.3s ease;
+}
 </style>

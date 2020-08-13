@@ -2,8 +2,6 @@
 
 package com.web.blog.model.user;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,14 +26,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String user_num;
 
-    private String email;
+    
     @JsonIgnore
-    private String password;
+	private String password;
+	private String email;
     private String name;
     private String nickname;
 
-	@Column(insertable = false, updatable = false)
-	private LocalDateTime birth;
 
 
 	public String getUser_num() {
@@ -78,13 +75,6 @@ public class User {
 		this.nickname = nickname;
 	}
 
-	public LocalDateTime getBirth() {
-		return birth;
-	}
-
-	public void setBirth(LocalDateTime birth) {
-		this.birth = birth;
-	}
 
     
 
