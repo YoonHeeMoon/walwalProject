@@ -132,7 +132,7 @@ public class AccountController {
 	}
 
 	//회원 가입
-	@PostMapping("/account")
+	@PostMapping("/account/signup")
 	@ApiOperation(value = "가입하기")
 	public Object signup(@Valid @RequestBody SignupRequest request) {
 		String email = request.getEmail();

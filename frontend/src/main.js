@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import "./style/tailwind.css";
 import App from './App.vue'
 import router from './router'
 import VueCookies from 'vue-cookies'
