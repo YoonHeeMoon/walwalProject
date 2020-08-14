@@ -30,8 +30,8 @@
             </div>
             <div v-else>
               {{detailsearch.d_dong}}
-            
-                  <kakaoVue :val="detailsearch.d_dong"/>
+                  <kakaoVue v-bind:val="detailsearch.d_dong">
+                  </kakaoVue>
             </div>
           </div>
         </b-modal>
@@ -64,10 +64,7 @@ export default {
       link: "",
       type:"",
       searches: [],
-      detailsearch: "",
-      lng: "",
-      lat: "",
-      results: [],
+      detailsearch: ""
     };
   },
   methods: {
@@ -96,11 +93,7 @@ export default {
       )
         .then(res => this.detailsearch = res.data,
           console.log(this.detailsearch.d_dong),
-          axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+'서울특별시'+'&key=AIzaSyA0l538JpdPEwHpgl4PfROrV54pFK5IMlA')
-          .then(result => this.results = result,
-          console.log(this.results),
-          console.log("lat!")
-          ).catch(err => console.error(err))
+          
         )
         .catch(err => console.error(err));
 
