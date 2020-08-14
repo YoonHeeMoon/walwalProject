@@ -149,11 +149,7 @@ export default {
                 name: null,
                 password: null,
                 email: null,
-<<<<<<< HEAD
-                nickname: null,
-=======
                 nickname:null
->>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
             }
         }
     },
@@ -240,19 +236,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.btn {
-  border: 1px solid currentColor;
-  border-radius: 999999px;
-  padding: 0.75rem 3rem;
-  text-align: center;
-  background: transparent;
-  cursor: pointer;
-  border-color: currentColor;
-  width: fit-content;
-  font-weight: 700;
-  position: relative;
-  transition: color 0.3s ease;
-}
-</style>
