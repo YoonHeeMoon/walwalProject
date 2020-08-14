@@ -33,12 +33,29 @@
           </div>
         </div>
       </div>
-      <div class="px-5">
-        <h1>공지사항</h1>
-            <b-link class="d-flex justify-content-end" to="/articles/Alert/">더보기</b-link>
-            <b-table :items="items" :fields="fields">
-            </b-table>
-      </div>
+      <h1>공지사항</h1>
+      <br>
+        <div style="padding: 0px 100px 0px 100px">
+        <b-link class="d-flex justify-content-end link" to="/alerts/Alert">더보기</b-link>
+          <b-table :items="items" :fields="fields" responsive="sm">
+            <template v-slot:cell(Detail)="row">
+              <b-button pill size="sm" variant="outline-warning" @click="row.toggleDetails" class="mr-2">
+                {{ row.detailsShowing ? 'Hide' : 'Show'}} 
+              </b-button>
+            </template>
+
+            <template v-slot:row-details="row">
+              <b-card>
+
+                <b-row class="mb-2">
+                  <b-col>{{ row.item.isActive }}</b-col>
+                </b-row>
+
+                <b-button pill size="sm" variant="outline-warning" @click="row.toggleDetails">Hide</b-button>
+              </b-card>
+            </template>
+          </b-table>
+        </div>
     </div>
   </div>
 </template>
@@ -60,10 +77,11 @@ export default {
       maxDate.setDate(15)
     return {
       selected: null,
+      fields: ['No', '제목','Detail'],
       items: [
-          { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-          { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-          { age: 89, first_name: 'Geneva', last_name: 'Wilson' }
+        { isActive: '안녕하세요 WalWal입니다. 최근 장마 발생때문에 많은 지역에서 피해가 속출하고 있습니다. 여행 시 이점 꼭 확인하시고 조심하시길 바랍니다. 감사합니다.', No:9, 제목: '홍수 관련 공지'},
+        { isActive: '안녕하세요 WalWal입니다. 접속 오류 문제를 해결했습니다. 서비스 이용에 불편을 드려 죄송합니다. 앞으로 고객님의 편의를 위해 노력하는 WalWal이 되겠습니다. 감사합니다.', No:8, 제목: '오류 해결 공지'},
+        { isActive: '안녕하세요 WalWal입니다. 지난 7일 저녁 9시부터 생긴 접속 오류 관련 공지올립니다. 서비스 이용에 불편을 드려 죄송합니다. 신속하게 조치하겠습니다.', No:7, 제목: '서비스 오류 안내'},
         ],
       options: [
         { value: null, text: '지역 선택' },
@@ -128,8 +146,19 @@ export default {
   border-radius: 10px;
 }
 
+.link {
+  font-weight: bold;
+  color: gray;
+  padding-bottom: 10px;
+}
+
+.link:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .text-group{
-  padding: 100px 0px 200px 0;
+  padding: 100px 0px 170px 0;
 }
 
 .home-title {
