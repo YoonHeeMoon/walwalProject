@@ -131,23 +131,14 @@ public class AccountController {
 		return response;
 	}
 
-<<<<<<< HEAD
-
-	@PostMapping("/account/signup")
-=======
 	//회원 가입
 	@PostMapping("/account")
->>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 	@ApiOperation(value = "가입하기")
 	public Object signup(@Valid @RequestBody SignupRequest request) {
 		String email = request.getEmail();
 		String password = request.getPassword();
 		String nickname = request.getNickname();
 		String name = request.getName();
-<<<<<<< HEAD
-
-=======
->>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 		
 		System.out.println("가입한 이메일 : " + email);
 		System.out.println("닉네임 : " + nickname);
@@ -165,10 +156,6 @@ public class AccountController {
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setName(name);
-<<<<<<< HEAD
-
-=======
->>>>>>> bc9bef018ee6b28133a34dc30d216260f0664555
 		
 		userDao.save(user);
 
