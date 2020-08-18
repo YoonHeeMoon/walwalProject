@@ -31,9 +31,9 @@
             <div v-else>
             
               <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators>
-                <b-carousel-slide :img-src="detailsearch.d_img1"></b-carousel-slide>
-                <b-carousel-slide :img-src="detailsearch.d_img2"></b-carousel-slide>
-                <b-carousel-slide :img-src="detailsearch.d_img3"></b-carousel-slide>
+                <b-carousel-slide class="Slide" :img-src="detailsearch.d_img1"></b-carousel-slide>
+                <b-carousel-slide class="Slide" :img-src="detailsearch.d_img2"></b-carousel-slide>
+                <b-carousel-slide class="Slide" :img-src="detailsearch.d_img3"></b-carousel-slide>
               </b-carousel>
               <br>
                   <kakaoVue v-bind:val="detailsearch.d_dong">
@@ -167,6 +167,11 @@ a:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.Slide {
+  width:100%;
+  max-height: 400px !important;
 }
 
 </style>
