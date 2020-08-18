@@ -2,36 +2,60 @@
   <div class="bg-image">
     <div class="home container">
       <b-input-group class="d-flex flex-row justify-content-between pt-5" >
-        <b-form-select v-model="selected" :options="options"></b-form-select>
-        <b-form-datepicker v-model= "checkin" id="datepicker-invalid-checkIn" :min="min" :max="max" locale="ko" class="mb-2" placeholder="체크인" ></b-form-datepicker>
-        <b-form-datepicker v-model= "checkout"  id="datepicker-invalid-checkOut" :min="min" :max="max" locale="ko" class="mb-2" placeholder="체크아웃"></b-form-datepicker>
+        <b-form-select v-model="selected" :options="options" ></b-form-select>
+        <b-form-datepicker v-model= "checkin" id="datepicker-invalid-checkIn" :min="min" :max="max" locale="ko" class="" placeholder="체크인" ></b-form-datepicker>
+        <b-form-datepicker v-model= "checkout"  id="datepicker-invalid-checkOut" :min="min" :max="max" locale="ko" class="" placeholder="체크아웃"></b-form-datepicker>
         <b-form-spinbutton id="demo-sb" v-model="people" min="1" max="100" placeholder="인원 수"></b-form-spinbutton>
         <b-input-group-append>
           <b-button v-on:click= "submit" size="sm" text="Button" style="color:gray; height:38px; background-color: white; border-color: lightgray;"><font-awesome-icon icon="search"/></b-button>
         </b-input-group-append>
       </b-input-group>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex">
         <div class="text-group">
-          <h1 class="home-title">함께하는 여행.. 그 이상의 즐거움 </h1>
-          <h5 class="home-subtitle">반려동물과 함께하는 여행! WALWAL에서 두배로 즐기세요</h5>
+          <h1 class="home-title">함께하는 여행 <br> 그 이상의 즐거움 </h1>
+          <h5 class="home-subtitle">반려동물과 함께하는 여행! <br> WALWAL에서 두배로 즐기세요!</h5>
+          <div class="d-flex justify-content-start pl-3">
+            <b-button v-b-toggle.company>WALWAL이란?</b-button>
+            <b-sidebar id="company" right shadow width="400px">
+            <div class="px-3 py-2">
+              <img src=../assets/walwal1.png alt="" class="img-size pb-3">
+               <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators>
+                <b-carousel-slide img-src="https://cdn.pixabay.com/photo/2017/12/27/14/02/friends-3042751_960_720.jpg"></b-carousel-slide>
+                <b-carousel-slide img-src="https://i.pinimg.com/originals/bf/b3/c9/bfb3c9a2dc72cb9f70a80b6217eb57a2.jpg"></b-carousel-slide>
+              </b-carousel>
+              <br>
+                <p>반려견과 함께할 숙박 정보</p>
+                <p>숙소 이미지, 예약, 금액 등 숙박에 필요한 정보</p>
+                <p>동물 병원, 반려견과의 공원 정보</p>
+                <p>walwal이 해결해드립니다.</p>
+            </div>
+    </b-sidebar>
+          </div>
         </div>
       </div>
-      <b-card-group deck class="p-5">
-        <b-card>
-          <img src="../assets/Savemoney.jpg" img-top style="width:100%; border-radius:20px;">
-            <b-card-text>
-              <h3 class="pt-3">최저가 검색</h3>
-              <p class="m-0">저렴한 펜션이 최고! 최저가로 펜션을 즐기세요!</p>
-            </b-card-text>
-        </b-card>
-        <b-card>
-          <img src="../assets/travel.jpg" img-top style="width:100%; border-radius:20px;">
-            <b-card-text>
-              <h3 class="pt-3">BEST</h3>
-              <p class="m-0">여행자들이 뽑은 BEST펜션! 함께 알아봐요!</p>
-            </b-card-text>
-        </b-card>
-      </b-card-group>
+      <h1>공지사항</h1>
+      <br>
+        <div style="padding: 0px 100px 0px 100px">
+        <b-link class="d-flex justify-content-end link" to="/alerts/Alert">더보기</b-link>
+          <b-table :items="items" :fields="fields" responsive="sm">
+            <template v-slot:cell(Detail)="row">
+              <b-button pill size="sm" variant="outline-warning" @click="row.toggleDetails" class="mr-2">
+                {{ row.detailsShowing ? 'Hide' : 'Show'}} 
+              </b-button>
+            </template>
+
+            <template v-slot:row-details="row">
+              <b-card>
+
+                <b-row class="mb-2">
+                  <b-col>{{ row.item.isActive }}</b-col>
+                </b-row>
+
+                <b-button pill size="sm" variant="outline-warning" @click="row.toggleDetails">Hide</b-button>
+              </b-card>
+            </template>
+          </b-table>
+        </div>
     </div>
   </div>
 </template>
@@ -52,7 +76,13 @@ export default {
       maxDate.setMonth(maxDate.getMonth() + 2)
       maxDate.setDate(15)
     return {
-    selected: null,
+      selected: null,
+      fields: ['No', '제목','Detail'],
+      items: [
+        { isActive: '안녕하세요 WalWal입니다. 최근 장마 발생때문에 많은 지역에서 피해가 속출하고 있습니다. 여행 시 이점 꼭 확인하시고 조심하시길 바랍니다. 감사합니다.', No:9, 제목: '홍수 관련 공지'},
+        { isActive: '안녕하세요 WalWal입니다. 접속 오류 문제를 해결했습니다. 서비스 이용에 불편을 드려 죄송합니다. 앞으로 고객님의 편의를 위해 노력하는 WalWal이 되겠습니다. 감사합니다.', No:8, 제목: '오류 해결 공지'},
+        { isActive: '안녕하세요 WalWal입니다. 지난 7일 저녁 9시부터 생긴 접속 오류 관련 공지올립니다. 서비스 이용에 불편을 드려 죄송합니다. 신속하게 조치하겠습니다.', No:7, 제목: '서비스 오류 안내'},
+        ],
       options: [
         { value: null, text: '지역 선택' },
         { value: 'seoul', text: '서울' },
@@ -86,15 +116,21 @@ export default {
         console.log(this.checkout);
         console.log(this.people);
         location.href="/search/" + this.selected + "/" + this.checkin + "/" + this.checkout + "/" + this.people;
-    }
+        
+    },
   }
   }
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
+
+.img-size {
+ width: 75%;
+}
+
 .bg-image {
-  background-image: url("../assets/main3.jpg");
+  background-image: url("../assets/main5.jpg");
   background-size: 100% 650px;
   display: flex;
   flex-wrap: wrap;
@@ -110,20 +146,34 @@ export default {
   border-radius: 10px;
 }
 
+.link {
+  font-weight: bold;
+  color: gray;
+  padding-bottom: 10px;
+}
+
+.link:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .text-group{
-  padding: 150px 0px 200px 0;
+  padding: 100px 0px 170px 0;
 }
 
 .home-title {
   color: white;
+  padding-left: 10px;
   font-family: 'Nanum Gothic Coding', monospace;
-  text-align: center;
+  text-align: left;
 }
 
 .home-subtitle {
-  padding-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
   color: lightgray;
-  text-align: center;
+  text-align: left;
   font-family: 'Nanum Gothic Coding', monospace;
 }
 </style>

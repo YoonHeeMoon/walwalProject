@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
-import SignupView from '../views/accounts/SignupView.vue'
+import SignupView from '@/views/accounts/SignupView.vue'
+import Profile from '../views/accounts/Profile.vue'
 
 import CreateView from '../views/articles/CreateView.vue'
 import DetailView from '../views/articles/DetailView.vue'
@@ -11,8 +12,7 @@ import ListView from '../views/articles/ListView.vue'
 import AlertView from '../views/alerts/AlertView.vue'
 
 import SearchView from '../views/search/SearchView.vue'
-import SearchDetailView from '../views/search/SearchDetail.vue'
-
+import MapView from '../views/map/KakaoMapView.vue'
 
 Vue.use(VueRouter)
 
@@ -23,14 +23,19 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/accounts/login',
+    path: '/account/login',
     name: 'Login',
     component: LoginView,
   },
   {
-    path: '/accounts/signup',
+    path: '/account/signup',
     name: 'Signup',
     component: SignupView,
+  },
+  {
+    path: '/account/profile',
+    name: 'Profile',
+    component: Profile
   },
   {
     path: '/articles/create',
@@ -58,10 +63,15 @@ Vue.use(VueRouter)
     component: SearchView,
   },
   {
-    path: '/search/detail',
-    name: 'SearchDetail',
-    component: SearchDetailView,
-  }
+    path: '/detailsearch/:link/:type',
+    name: 'DetailSearch',
+    component: SearchView,
+  },
+  {
+    path: '/map',
+    name: 'Map',
+    component: MapView,
+  },
 ]
 
 const router = new VueRouter({

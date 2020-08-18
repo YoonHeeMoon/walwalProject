@@ -1,11 +1,5 @@
-// 하단 DB 설정 부분은 Sub PJT II에서 데이터베이스를 구성한 이후에 주석을 해제하여 사용.
-
 package com.web.blog.model.user;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,15 +22,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String user_num;
 
-    private String email;
+    
     @JsonIgnore
-    private String password;
+	private String password;
+	private String email;
     private String name;
     private String nickname;
-
-	@Column(insertable = false, updatable = false)
-	private LocalDateTime birth;
-
 
 	public String getUser_num() {
 		return user_num;
@@ -76,14 +67,6 @@ public class User {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
-	}
-
-	public LocalDateTime getBirth() {
-		return birth;
-	}
-
-	public void setBirth(LocalDateTime birth) {
-		this.birth = birth;
 	}
 
     
