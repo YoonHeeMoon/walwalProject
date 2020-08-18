@@ -17,7 +17,7 @@
                   Login
                 </template>
                 <div class="d-block text-center">
-                  <LoginVue @submit-login-data="login" @submit-signup-data="signup"/>
+                  <LoginVue @submit-login-data="login" @submit-signup-data="signup" @set-cookie="setCookie" />
                 </div>
               </b-modal>
             </b-nav-item>
@@ -79,15 +79,13 @@ export default {
        })
         .then(res => {
           this.setCookie(res.data.key)
-          this.$router.push({ name: 'Home' })
+     //     this.$router.push({ name: 'Home' })
         })
         .catch(err => this.errorMessages = err.response.data)
     },
 
   login(loginData) {
-    // console.log(loginData)
-    console.log(loginData.email)
-    console.log(loginData.password)
+    
     axios.get(SERVER_URL + '/account/login',{
       params:{
         email:loginData.email,
@@ -96,7 +94,7 @@ export default {
     })
       .then(res => {
         this.setCookie(res.data.key)
-        this.$router.push({ name: 'Home' })
+    //    this.$router.push({ name: 'Home' })
       })
       .catch(err => this.errorMessages = err.response.data)
     },

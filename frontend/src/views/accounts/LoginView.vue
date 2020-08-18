@@ -176,11 +176,14 @@ export default {
             .then(res => {
              //로그인 성공
              console.log(res)
-             this.$router.push({ name: 'Home' })
+            
+             this.$emit('set-cookie', this.loginData)
+            // this.$router.push({ name: 'Home' })
              
             })
             .catch(err => {
               console.log(err);
+              
             });
         })
     },
@@ -208,12 +211,16 @@ export default {
         
                 email: userInfo.email,
                 nickname: userInfo.nickname,
-          
+                
             })
             .then((res) => {
               console.log(res);
               console.log("회원 정보 있음");
-              this.$router.push({ name: 'Home' })
+              
+              this.$emit('set-cookie', this.loginData)
+    
+              this.$bvModal.hide("bv-modal-example");
+            //  this.$router.push({ name: 'Home' })
               // this.$parent.login(userInfo);
             })
             .catch((err) => {
