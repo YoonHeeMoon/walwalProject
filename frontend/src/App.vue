@@ -71,7 +71,7 @@ export default {
     },
 
   signup(signupData) {
-      console.log('3', signupData)
+     // console.log('3', signupData)
        axios.post(SERVER_URL + '/account/signup', signupData, {
          headers: {
            'Content-Type': 'application/json'
