@@ -25,6 +25,7 @@
               로딩중
             </div>
             <div v-else>
+              <!-- 사진부분 -->
               <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators>
                 <b-carousel-slide :img-src="detailsearch.d_img1"></b-carousel-slide>
                 <b-carousel-slide :img-src="detailsearch.d_img2"></b-carousel-slide>
