@@ -5,6 +5,10 @@
     <p class="m-1">체크인: {{checkin}}</p>
     <p class="m-1">체크아웃: {{checkout}}</p>
     </div>
+    <div v-if="!searches.length">
+      <img src=../../assets/runningCogi.gif>
+
+      </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
         <b-link id="show-btn" v-b-modal.modal-scrollable @click="getModalDatas(search.s_link,search.s_type)"> 
