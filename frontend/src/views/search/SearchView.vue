@@ -7,7 +7,6 @@
     </div>
     <div v-if="!searches.length">
       <img src=../../assets/runningCogi.gif>
-
       </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
@@ -26,7 +25,8 @@
         <b-modal id="modal-scrollable" size="lg" scrollable title="숙소 상세보기">
           <div class="d-block text-center">
             <div v-if="detailsearch ===''">
-              로딩중
+              
+              <img src=../../assets/runningCogi.gif style="width:100%;">
             </div>
             <div v-else>
             
