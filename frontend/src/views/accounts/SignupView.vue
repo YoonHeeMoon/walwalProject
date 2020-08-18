@@ -65,7 +65,7 @@ export default {
     },
     methods: {
         signup() {
-            console.log('1', this.signupData)
+          //  console.log('1', this.signupData)
             this.$emit('submit-signup-data', this.signupData)
 
             
