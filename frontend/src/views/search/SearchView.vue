@@ -7,7 +7,7 @@
     </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
-        <b-link id="show-btn" @click="getModalDatas(search.s_link,search.s_type)"> 
+        <b-link id="show-btn" v-b-modal.modal-scrollable @click="getModalDatas(search.s_link,search.s_type)"> 
           <b-card :title="search.s_name" :img-src="search.s_img" img-alt="Image" img-top >
             <b-card-text> 
               {{search.s_info}}
@@ -19,21 +19,34 @@
         </b-link>
       </div>
     </b-card-group>
-        <b-modal id="bv-modal-search" size="lg" hide-footer class="SearchDetail-modal">
-          <template v-slot:modal-title>
-            숙소 상세보기
-            
-          </template>
+        <b-modal id="modal-scrollable" size="lg" scrollable title="숙소 상세보기">
           <div class="d-block text-center">
             <div v-if="detailsearch ===''">
               로딩중
             </div>
             <div v-else>
-              {{detailsearch.d_dong}}
+              <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators>
+                <b-carousel-slide :img-src="detailsearch.d_img1"></b-carousel-slide>
+                <b-carousel-slide :img-src="detailsearch.d_img2"></b-carousel-slide>
+                <b-carousel-slide :img-src="detailsearch.d_img3"></b-carousel-slide>
+              </b-carousel>
+              <br>
                   <kakaoVue v-bind:val="detailsearch.d_dong">
                   </kakaoVue>
             </div>
           </div>
+          <template v-slot:modal-footer>
+            <div class="w-100">
+              <b-button
+                variant="primary"
+                size="sm"
+                class="float-right"
+                @click="gotopage()"
+              >
+                숙소 이동하기
+              </b-button>
+            </div>
+          </template>
         </b-modal>
   </div>
 
@@ -100,6 +113,12 @@ export default {
         this.$bvModal.show('bv-modal-search');
         console.log(this.detailsearch.d_dong);
     },
+    gotopage(){
+      window.open(this.link);
+    },
+    gotoimg(){
+      window.open(this.link);
+    },
   },
   created() {
     this.fetchSearches()
@@ -144,4 +163,5 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 </style>

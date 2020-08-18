@@ -72,7 +72,8 @@ public class SearchController {
     @GetMapping("/detailsearch")
     @ApiOperation(value = "세부검색")
     public ResponseEntity<SearchDetail> dSearch(@RequestParam(required = true) final String link,
-    @RequestParam(required = true) final String type,final HttpSession session)throws IOException{
+    @RequestParam(required = true) final String type,final HttpSession session)throws IOException,
+            InterruptedException {
         
         SearchDetail dlist = dService.getAirbnbDatas(link,type);
 
