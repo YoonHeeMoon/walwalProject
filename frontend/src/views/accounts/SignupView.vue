@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container style="font-family: 'Nanum Gothic Coding', monospace;">
       <b-row class="my-1">
         <b-col sm="3">
           <label for="name">이름 </label>
@@ -75,5 +75,5 @@ export default {
 </script>
 
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
 </style>

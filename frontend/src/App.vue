@@ -10,7 +10,7 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-nav-item class="mx-2" v-if="!isLoggedIn">
-              <b-link id="show-btn" @click="$bvModal.show('bv-modal-example')">로그인</b-link>
+              <b-link id="show-btn" @click="$bvModal.show('bv-modal-example')" ><font-awesome-icon icon="sign-in-alt"/> 로그인</b-link>
               <!-- <b-link id="show-btn" :to="{ name: 'Signup' }">회원가입</b-link> -->
               <b-modal id="bv-modal-example" hide-footer class="login-modal">
                 <template v-slot:modal-title>
@@ -27,8 +27,8 @@
               <template v-slot:button-content>
                 User
               </template>
-              <b-dropdown-item href="#" v-if="isLoggedIn"><b-link to="/account/profile" @click.native="Profile">Profile</b-link></b-dropdown-item>
-              <b-dropdown-item href="#" v-if="isLoggedIn"><b-link to="/account/logout" @click.native="logout">Logout</b-link></b-dropdown-item>
+              <b-dropdown-item href="#" v-if="isLoggedIn"><b-link to="/account/profile" @click.native="Profile"><font-awesome-icon icon="user"/> 내 정보</b-link></b-dropdown-item>
+              <b-dropdown-item href="#" v-if="isLoggedIn"><b-link to="/account/logout" @click.native="logout"><font-awesome-icon icon="sign-out-alt"/> 로그아웃</b-link></b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
       </b-navbar>
@@ -132,6 +132,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
