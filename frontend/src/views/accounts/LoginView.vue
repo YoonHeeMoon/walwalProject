@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div style="font-family: 'Nanum Gothic Coding', monospace;">
     <b-container>
       <b-row class="my-1">
         <b-col sm="3">
-          <label for="email">아이디 </label>
+          <label for="email">이메일</label>
         </b-col>
         <b-col sm="9">
           <b-form-input v-model="loginData.email" type="email"></b-form-input>
@@ -19,7 +19,6 @@
       </b-row>
       <div class="pt-2">
           <b-button @click="login" style="background-color: #F1C40F; border-color:#F1C40F;">로그인</b-button>
-  
       </div>
       <br>
       <div class="d-flex justify-content-center">
@@ -243,3 +242,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
+</style>

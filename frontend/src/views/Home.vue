@@ -7,7 +7,7 @@
         <b-form-datepicker v-model= "checkout"  id="datepicker-invalid-checkOut" :min="min" :max="max" locale="ko" class="" placeholder="체크아웃"></b-form-datepicker>
         <b-form-spinbutton id="demo-sb" v-model="people" min="1" max="100" placeholder="인원 수"></b-form-spinbutton>
         <b-input-group-append>
-          <b-button v-on:click= "submit" size="sm" text="Button" style="color:gray; height:38px; background-color: white; border-color: lightgray;"><font-awesome-icon icon="search"/></b-button>
+          <b-button v-on:click= "submit" size="sm" text="Button" style="color:gray; height:38px; background-color: white; border-color: lightgray;"><font-awesome-icon icon="paw"/></b-button>
         </b-input-group-append>
       </b-input-group>
       <div class="d-flex">
@@ -15,7 +15,7 @@
           <h1 class="home-title">함께하는 여행 <br> 그 이상의 즐거움 </h1>
           <h5 class="home-subtitle">반려동물과 함께하는 여행! <br> WALWAL에서 두배로 즐기세요!</h5>
           <div class="d-flex justify-content-start pl-3">
-            <b-button v-b-toggle.company>WALWAL이란?</b-button>
+            <b-button v-b-toggle.company variant="outline-light"><b>WALWAL</b>이란?</b-button>
             <b-sidebar id="company" right shadow width="400px">
             <div class="px-3 py-2">
               <img src=../assets/walwal1.png alt="" class="img-size pb-3">
@@ -24,16 +24,19 @@
                 <b-carousel-slide img-src="https://i.pinimg.com/originals/bf/b3/c9/bfb3c9a2dc72cb9f70a80b6217eb57a2.jpg"></b-carousel-slide>
               </b-carousel>
               <br>
-                <p>반려견과 함께할 숙박 정보</p>
-                <p>숙소 이미지, 예약, 금액 등 숙박에 필요한 정보</p>
-                <p>동물 병원, 반려견과의 공원 정보</p>
-                <p>walwal이 해결해드립니다.</p>
+              <div style="font-family: 'Nanum Gothic Coding', monospace;">
+                <p><font-awesome-icon icon="dog"/> 반려견과 함께할 숙박 정보</p>
+                <p><font-awesome-icon icon="dog"/> 숙소 예약, 금액 등 숙박에 필요한 정보</p>
+                <p><font-awesome-icon icon="dog"/> 동물 병원, 반려견과의 공원 정보</p>
+                <p><font-awesome-icon icon="dog"/> <b style="font-size: xx-large">walwal</b>이 해결해드립니다.</p>
+              </div>
             </div>
     </b-sidebar>
           </div>
         </div>
       </div>
-      <h1>공지사항</h1>
+      <div style="font-family: 'Nanum Gothic Coding', monospace;">
+      <h1 class="text-warning"><font-awesome-icon icon="paw"/> 공지사항 <font-awesome-icon icon="paw"/></h1>
       <br>
         <div style="padding: 0px 100px 0px 100px">
         <b-link class="d-flex justify-content-end link" to="/alerts/Alert">더보기</b-link>
@@ -56,6 +59,7 @@
             </template>
           </b-table>
         </div>
+      </div>
     </div>
   </div>
 </template>

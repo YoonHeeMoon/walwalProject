@@ -1,13 +1,14 @@
 <template>
-  <div class ="wrap-search container search">
+  <div class ="wrap-search container search" style="font-family: 'Nanum Gothic Coding', monospace;">
     <div style="text-align:left;">
-    <h2>{{selected}}의 숙소</h2>
+    <h2><font-awesome-icon icon="paw"/>{{selected}}의 숙소<font-awesome-icon icon="paw"/></h2>
     <p class="m-1">체크인: {{checkin}}</p>
     <p class="m-1">체크아웃: {{checkout}}</p>
     </div>
+    <hr>
     <div v-if="!searches.length">
       <img src=../../assets/runningCogi.gif>
-      </div>
+    </div>
     <b-card-group deck class="row">
       <div v-for="search in searches" :key="search" class="pt-5 px-0 col-lg-4 col-sm-6 content">
         <b-link id="show-btn" v-b-modal.modal-scrollable @click="getModalDatas(search.s_link,search.s_type)"> 
@@ -25,28 +26,30 @@
         <b-modal id="modal-scrollable" size="lg" scrollable title="숙소 상세보기">
           <div class="d-block text-center">
             <div v-if="detailsearch ===''">
-              
               <img src=../../assets/runningCogi.gif style="width:100%;">
             </div>
             <div v-else>
-            
+              <h2><font-awesome-icon icon="paw"/>PHOTO<font-awesome-icon icon="paw"/></h2>
               <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators>
                 <b-carousel-slide class="Slide" :img-src="detailsearch.d_img1"></b-carousel-slide>
                 <b-carousel-slide class="Slide" :img-src="detailsearch.d_img2"></b-carousel-slide>
                 <b-carousel-slide class="Slide" :img-src="detailsearch.d_img3"></b-carousel-slide>
               </b-carousel>
+              <hr>
+              <h2><font-awesome-icon icon="paw"/>주변시설<font-awesome-icon icon="paw"/></h2>
               <br>
-                  <kakaoVue v-bind:val="detailsearch.d_dong">
-                  </kakaoVue>
+                <kakaoVue v-bind:val="detailsearch.d_dong">
+                </kakaoVue>
             </div>
           </div>
           <template v-slot:modal-footer>
             <div class="w-100">
               <b-button
-                variant="primary"
+                variant="outline-warning"
                 size="sm"
                 class="float-right"
                 @click="gotopage()"
+                
               >
                 숙소 이동하기
               </b-button>
@@ -132,6 +135,8 @@ export default {
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
+
 .search {
   padding-top: 100px;
 }

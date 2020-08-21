@@ -1,6 +1,6 @@
 <template>
-  <div class="container" style="padding: 120px 100px 0px 100px">
-    <b-table :items="items" :fields="fields" responsive="sm">
+  <div class="container" style="padding: 120px 100px 0px 100px" >
+    <b-table :items="items" :fields="fields" responsive="sm" style="font-family: 'Nanum Gothic Coding', monospace;">
       <template v-slot:cell(Detail)="row">
         <b-button pill size="sm" variant="outline-warning" @click="row.toggleDetails" class="mr-2">
           {{ row.detailsShowing ? 'Hide' : 'Show'}} 
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+
   export default {
     data() {
       return {
@@ -44,3 +45,7 @@
     }
   }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
+</style>
