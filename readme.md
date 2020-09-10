@@ -14,10 +14,6 @@
 - 회원 관리 -  SNS 소셜 로그인, 가입하기
 - 공지사항 관리
 
-# start
-
-## 개발일정
-
 ## 브랜치 전략
 ```
 master -> develop -> feat/filename
