@@ -1,6 +1,8 @@
 ﻿ :dog: WalWal 
 ==========
 
+[![Video Label](http://img.youtube.com/vi/_XDtZSNFNEE/0.jpg)](https://youtu.be/_XDtZSNFNEE)
+
 # 트랙 
 - 웹 기술
 
