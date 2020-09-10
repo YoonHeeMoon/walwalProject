@@ -1,7 +1,7 @@
 ﻿ :dog: WalWal 
 ==========
 
-[![Video Label](http://img.youtube.com/vi/_XDtZSNFNEE/0.jpg)](https://youtu.be/_XDtZSNFNEE)
+[![Video Label](http://img.youtube.com/vi/_XDtZSNFNEE/0.jpg)](https://youtu.be/_XDtZSNFNEE?t=58)
 -클릭하시면 소개 동영상 링크로 이동합니다.
 
 # 트랙 
